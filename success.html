@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed — Favorite Global Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0A0A0A;
+      color: #F5F5F0;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .box {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .check-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+    .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .title span { color: #D62828; }
+    .sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #C9A84C;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .detail-card {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label { color: #6B6B6B; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; }
+    .detail-value { color: #F5F5F0; }
+    .btn {
+      display: inline-block;
+      background: #D62828;
+      color: #F5F5F0;
+      padding: 14px 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .note {
+      font-size: 12px;
+      color: #6B6B6B;
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="check-icon">✅</div>
+    <h1 class="title">ORDER <span>CONFIRMED!</span></h1>
+    <p class="sub">Favorite Global Solutions LLC</p>
+
+    <div class="detail-card">
+      <div class="detail-row">
+        <span class="detail-label">Product</span>
+        <span class="detail-value" id="prod-name">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Size</span>
+        <span class="detail-value" id="prod-size">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Status</span>
+        <span class="detail-value" style="color:#2ECC71;">Payment Received ✓</span>
+      </div>
+    </div>
+
+    <p class="note">
+      Thank you for your order! A confirmation email is on its way to you.<br/>
+      Estimated delivery: <strong style="color:#F5F5F0;">3–7 business days</strong> once your sneakers arrive.<br/>
+      Questions? <strong style="color:#C9A84C;">favoriteglobalsolutions@gmail.com</strong><br/><br/>
+      <span style="color:#555;">Mèsi pou kòmand ou — nou pral kontakte ou rapid!</span>
+    </p>
+
+    <a href="/" class="btn" style="display:block;text-align:center;margin-top:28px;">← Back to Shop</a>
+    <a href="https://wa.me/17176590298" class="btn" style="display:block;text-align:center;margin-top:8px;background:#141414;border:1px solid rgba(255,255,255,0.1);">💬 Message Us on WhatsApp</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const prod = params.get('product');
+    const size = params.get('size');
+    if (prod) document.getElementById('prod-name').textContent = prod;
+    if (size) document.getElementById('prod-size').textContent = size;
+  </script>
+</body>
+</html>
