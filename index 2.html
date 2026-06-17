@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Favorite Global Solutions LLC — Premium Sneaker Reseller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0A0A0A;
+      --white: #F5F5F0;
+      --red: #D62828;
+      --gold: #C9A84C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E8E2;
+      --card-bg: #141414;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ───── NAV ───── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      font-size: 10px !important;
+      letter-spacing: 0.16em;
+    }
+
+    /* ───── HERO ───── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-ticker {
+      position: absolute;
+      top: 90px;
+      left: 0; right: 0;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      background: rgba(214,40,40,0.06);
+    }
+    .ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 20s linear infinite;
+      gap: 0;
+    }
+    .ticker-inner span {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      padding: 0 40px;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      margin-top: 60px;
+    }
+
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(80px, 14vw, 160px);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+    }
+    .hero-headline .line-red { color: var(--red); }
+    .hero-headline .line-dim { color: #3A3A3A; }
+
+    .hero-sub {
+      max-width: 520px;
+      font-size: 15px;
+      color: #9A9A9A;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #b81e1e; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-1px); }
+
+    .hero-stats {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      text-align: right;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    /* ───── SECTION SHARED ───── */
+    section { padding: 100px 48px; }
+
+    .section-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 48px;
+    }
+    .section-title span { color: var(--red); }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ───── NEW ARRIVALS ───── */
+    #new-arrivals { background: #0D0D0D; }
+
+    .arrivals-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+
+    .sneaker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .sneaker-card {
+      background: var(--card-bg);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .sneaker-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-4px); }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #1a1a1a;
+      margin-bottom: 20px;
+      padding: 12px;
+    }
+
+    .card-brand {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .card-colorway {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--white);
+    }
+
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      padding: 5px 10px;
+      text-transform: uppercase;
+    }
+    .badge-available { border: 1px solid #2ECC71; color: #2ECC71; }
+    .badge-limited { border: 1px solid var(--gold); color: var(--gold); }
+    .badge-new { background: var(--red); color: var(--white); border: none; }
+    .badge-arriving { border: 1px solid #3B9EFF; color: #3B9EFF; }
+
+    /* ───── SHOP / BRANDS ───── */
+    #shop-sneakers { background: var(--black); }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .brand-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      transition: border-color 0.2s;
+    }
+    .brand-card:hover { border-color: rgba(255,255,255,0.15); }
+
+    .brand-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .brand-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .brand-links { display: flex; flex-direction: column; gap: 10px; }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      text-decoration: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .brand-link:hover { border-color: var(--white); color: var(--white); }
+
+    /* ───── HOW IT WORKS ───── */
+    #how-it-works { background: #0D0D0D; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .step-card {
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+
+    .step-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: rgba(214,40,40,0.15);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* ───── PRICING ───── */
+    #pricing { background: var(--black); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--red);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      padding: 5px 16px;
+    }
+
+    .plan-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .plan-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .plan-price sup { font-size: 28px; vertical-align: top; margin-top: 10px; }
+    .plan-price sub { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--gray); }
+
+    .plan-range {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .plan-features { list-style: none; margin-bottom: 36px; }
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .plan-features li.included { color: var(--white); }
+    .plan-features .check { color: var(--red); font-size: 14px; }
+    .plan-features .cross { color: #3A3A3A; font-size: 14px; }
+
+    /* ───── SHIPPING & RETURNS ───── */
+    #shipping { background: #0D0D0D; }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .policy-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+    }
+
+    .policy-icon { font-size: 28px; margin-bottom: 20px; display: block; }
+
+    .policy-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .policy-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .policy-item:last-child { border-bottom: none; }
+
+    .policy-item-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      min-width: 90px;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .policy-item-text {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ───── ABOUT ───── */
+    #about { background: var(--black); }
+
+    .about-inner {
+      max-width: 720px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      color: #8A8A8A;
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+    .about-text strong { color: var(--white); font-weight: 500; }
+
+    .about-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+    .about-detail-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      min-width: 120px;
+      padding-top: 2px;
+    }
+    .about-detail-value {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ───── CONTACT ───── */
+    #contact { background: #0D0D0D; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .contact-info {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+
+    .contact-info-icon { font-size: 18px; margin-top: 2px; }
+
+    .contact-info-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .contact-info-value {
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(255,255,255,0.3);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #444; }
+
+    .form-select option { background: #1A1A1A; }
+
+    .form-textarea { resize: vertical; min-height: 100px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* ───── FOOTER ───── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 48px 48px 32px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--red); }
+
+    .footer-address {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+
+    .footer-socials { display: flex; gap: 20px; }
+    .footer-social {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-social:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--white); }
+
+    /* ───── SIZE SELECTOR ───── */
+    .size-section { margin: 16px 0 20px; }
+    .size-category-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .size-tab {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--gray);
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border-right: 1px solid var(--border);
+    }
+    .size-tab:last-child { border-right: none; }
+    .size-tab.active { background: var(--red); color: var(--white); }
+    .size-tab:hover:not(.active) { background: rgba(255,255,255,0.05); color: var(--white); }
+
+    .size-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .size-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      min-width: 44px;
+      text-align: center;
+    }
+    .size-btn:hover { border-color: var(--white); color: var(--white); }
+    .size-btn.selected { background: var(--red); border-color: var(--red); color: var(--white); }
+
+    /* ───── PAYMENT METHODS ───── */
+    .payment-methods {
+      margin: 20px 0;
+    }
+    .payment-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .payment-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .pay-icon {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ───── CHECKOUT MODAL ───── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 999;
+      overflow-y: auto;
+      padding: 40px 16px;
+    }
+    .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+    .modal-box {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+      max-width: 640px;
+      padding: 40px 36px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--white); }
+
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .modal-title span { color: var(--red); }
+
+    .modal-product-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      margin-bottom: 28px;
+    }
+
+    .modal-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    .modal-section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .modal-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 14px;
+    }
+    .modal-input:focus { border-color: rgba(255,255,255,0.3); }
+    .modal-input::placeholder { color: #444; }
+
+    .modal-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .modal-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 14px;
+      -webkit-appearance: none;
+    }
+    .modal-select option { background: #1a1a1a; }
+
+    .modal-payment-opts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .payment-opt {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--gray);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 9px 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+    }
+    .payment-opt.selected { border-color: var(--red); color: var(--white); background: rgba(214,40,40,0.1); }
+    .payment-opt:hover:not(.selected) { border-color: rgba(255,255,255,0.2); color: var(--white); }
+
+    .modal-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .modal-total-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--gray);
+    }
+    .modal-total-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--white);
+    }
+
+    .modal-note {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* ───── EMAIL CAPTURE BANNER ───── */
+    #email-capture {
+      background: var(--red);
+      padding: 48px;
+      text-align: center;
+    }
+    .email-capture-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .email-capture-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+    }
+    .email-capture-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .email-capture-input {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 13px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+    }
+    .email-capture-input::placeholder { color: rgba(255,255,255,0.45); }
+    .email-capture-input:focus { border-color: rgba(255,255,255,0.7); }
+    .email-capture-btn {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 13px 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .email-capture-btn:hover { background: #1a1a1a; }
+    .email-success-msg {
+      display: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+      margin-top: 12px;
+    }
+
+    /* ───── STRIPE CARD ELEMENT ───── */
+    #stripe-card-element {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 16px;
+      margin-bottom: 6px;
+      transition: border-color 0.2s;
+    }
+    #stripe-card-element.StripeElement--focus { border-color: rgba(255,255,255,0.35); }
+    #stripe-card-element.StripeElement--invalid { border-color: #ff6b6b; }
+
+    .stripe-accepted-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .pay-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 0.06em;
+    }
+
+    /* ───── SCROLL ANIMATIONS ───── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ───── MOBILE ───── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      #home { padding: 120px 24px 72px; }
+      .hero-stats { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px 24px; }
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">FAVORITE <span>GLOBAL</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#new-arrivals">New Arrivals</a></li>
+    <li><a href="#shop-sneakers">Shop Sneakers</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>NIKE</span><span>·</span><span>JORDAN</span><span>·</span>
+      <span>AIR MAX</span><span>·</span><span>DUNK LOW</span><span>·</span>
+      <span>NEW BALANCE</span><span>·</span><span>AIR FORCE 1</span><span>·</span>
+      <span>LIMITED EDITION</span><span>·</span><span>PREMIUM RESELLER</span><span>·</span>
+      <span>NIKE</span><span>·</span><span>JORDAN</span><span>·</span>
+      <span>AIR MAX</span><span>·</span><span>DUNK LOW</span><span>·</span>
+      <span>NEW BALANCE</span><span>·</span><span>AIR FORCE 1</span><span>·</span>
+      <span>LIMITED EDITION</span><span>·</span><span>PREMIUM RESELLER</span><span>·</span>
+    </div>
+  </div>
+
+  <p class="hero-eyebrow">Premium Sneaker Reseller · York, PA</p>
+
+  <h1 class="hero-headline">
+    <span class="line-dim">BUY.</span><br/>
+    <span class="line-red">SELL.</span><br/>
+    <span class="line-dim">WIN.</span>
+  </h1>
+
+  <p class="hero-sub">
+    At Favorite Global Solutions, we source authentic Nike, Jordan, New Balance and other premium footwear from trusted suppliers — bringing quality sneakers to our customers at competitive prices.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#shop-sneakers" class="btn-primary">Shop Sneakers</a>
+    <a href="#pricing" class="btn-outline">View Pricing</a>
+  </div>
+
+  <div class="hero-stats" aria-hidden="true">
+    <div>
+      <div class="stat-number">3+</div>
+      <div class="stat-label">Premium Brands</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Authentic Pairs</div>
+    </div>
+    <div>
+      <div class="stat-number">LLC</div>
+      <div class="stat-label">Registered Business</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NEW ARRIVALS -->
+<section id="new-arrivals">
+  <p class="section-eyebrow reveal">Fresh Drop</p>
+  <h2 class="section-title reveal">NEW <span>ARRIVALS</span></h2>
+
+  <div class="sneaker-grid">
+
+    <div class="sneaker-card reveal">
+      <span class="badge badge-new" style="margin-bottom:12px; display:inline-block;">NEW</span>
+      <img class="card-img" src="https://images.moresneakers.com/womens-nike-air-force-1-07-white-saturn-gold-315115-170-16412461923662.jpg" alt="Nike Air Force 1 Low White Saturn Gold" onerror="this.style.display='none'"/>
+      <div class="card-brand">Nike</div>
+      <div class="card-name">Air Force 1 Low</div>
+      <div class="card-colorway">White / Saturn Gold</div>
+      <div class="size-section">
+        <div class="size-category-tabs">
+          <button class="size-tab active" onclick="switchTab(this,'af1-w')">Women</button>
+          <button class="size-tab" onclick="switchTab(this,'af1-m')">Men</button>
+          <button class="size-tab" onclick="switchTab(this,'af1-k')">Kids</button>
+        </div>
+        <div id="af1-w" class="size-grid"><button class="size-btn selected">8W</button></div>
+        <div id="af1-m" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+        <div id="af1-k" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+      </div>
+      <div class="card-price-row">
+        <div class="card-price">$79.99</div>
+        <span class="badge badge-arriving">Arriving Soon</span>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Air Force 1 Low — White/Saturn Gold','$79.99','8W','Women')">BUY NOW →</button>
+    </div>
+
+    <div class="sneaker-card reveal">
+      <span class="badge badge-new" style="margin-bottom:12px; display:inline-block;">NEW</span>
+      <img class="card-img" src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/4b47d4c9-4b5e-4e6b-a027-3b1c8e4bdf94/dunk-low-womens-shoes-0kZvx6.png" alt="Nike Dunk Low Sail Picante Red" onerror="this.src='https://images.stockx.com/images/Nike-Dunk-Low-Friendship-Knot-Womens-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500'"/>
+      <div class="card-brand">Nike</div>
+      <div class="card-name">Dunk Low "Friendship Knot"</div>
+      <div class="card-colorway">Sail / Picante Red / Flax / Pale Ivory</div>
+      <div class="size-section">
+        <div class="size-category-tabs">
+          <button class="size-tab active" onclick="switchTab(this,'dk1-w')">Women</button>
+          <button class="size-tab" onclick="switchTab(this,'dk1-m')">Men</button>
+          <button class="size-tab" onclick="switchTab(this,'dk1-k')">Kids</button>
+        </div>
+        <div id="dk1-w" class="size-grid">
+          <button class="size-btn" onclick="selectSize(this)">6W</button>
+          <button class="size-btn" onclick="selectSize(this)">6.5W</button>
+          <button class="size-btn selected" onclick="selectSize(this)">7W</button>
+          <button class="size-btn" onclick="selectSize(this)">7.5W</button>
+          <button class="size-btn" onclick="selectSize(this)">8W</button>
+        </div>
+        <div id="dk1-m" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+        <div id="dk1-k" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+      </div>
+      <div class="card-price-row">
+        <div class="card-price">$69.99</div>
+        <span class="badge badge-arriving">Arriving Soon</span>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low Friendship Knot — Sail/Picante Red','$69.99','7W','Women')">BUY NOW →</button>
+    </div>
+
+    <div class="sneaker-card reveal">
+      <span class="badge badge-new" style="margin-bottom:12px; display:inline-block;">NEW</span>
+      <img class="card-img" src="https://images.stockx.com/images/Nike-Dunk-Low-Olive-Aura-Womens-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500" alt="Nike Dunk Low Womens Size 9" onerror="this.style.display='none'"/>
+      <div class="card-brand">Nike</div>
+      <div class="card-name">Dunk Low</div>
+      <div class="card-colorway">Womens — Size 9</div>
+      <div class="size-section">
+        <div class="size-category-tabs">
+          <button class="size-tab active" onclick="switchTab(this,'dk2-w')">Women</button>
+          <button class="size-tab" onclick="switchTab(this,'dk2-m')">Men</button>
+          <button class="size-tab" onclick="switchTab(this,'dk2-k')">Kids</button>
+        </div>
+        <div id="dk2-w" class="size-grid"><button class="size-btn selected">9W</button></div>
+        <div id="dk2-m" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+        <div id="dk2-k" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+      </div>
+      <div class="card-price-row">
+        <div class="card-price">$69.99</div>
+        <span class="badge badge-arriving">Arriving Soon</span>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — Womens','$69.99','9W','Women')">BUY NOW →</button>
+    </div>
+
+    <div class="sneaker-card reveal">
+      <span class="badge badge-new" style="margin-bottom:12px; display:inline-block;">NEW</span>
+      <img class="card-img" src="https://images.stockx.com/images/Nike-Dunk-Low-Teal-Zeal-Womens-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500" alt="Nike Dunk Low White Turquoise Orange" onerror="this.style.display='none'"/>
+      <div class="card-brand">Nike</div>
+      <div class="card-name">Dunk Low</div>
+      <div class="card-colorway">White / Turquoise-Orange</div>
+      <div class="size-section">
+        <div class="size-category-tabs">
+          <button class="size-tab active" onclick="switchTab(this,'dk3-w')">Women</button>
+          <button class="size-tab" onclick="switchTab(this,'dk3-m')">Men</button>
+          <button class="size-tab" onclick="switchTab(this,'dk3-k')">Kids</button>
+        </div>
+        <div id="dk3-w" class="size-grid"><button class="size-btn selected">7.5W</button></div>
+        <div id="dk3-m" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+        <div id="dk3-k" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+      </div>
+      <div class="card-price-row">
+        <div class="card-price">$89.99</div>
+        <span class="badge badge-arriving">Arriving Soon</span>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — White/Turquoise-Orange','$89.99','7.5W','Women')">BUY NOW →</button>
+    </div>
+
+    <div class="sneaker-card reveal">
+      <span class="badge badge-new" style="margin-bottom:12px; display:inline-block;">NEW</span>
+      <img class="card-img" src="https://images.stockx.com/images/Nike-Dunk-Low-Next-Nature-Purple-Cream-Womens-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500" alt="Nike Dunk Low Next Nature Purple Cream" onerror="this.style.display='none'"/>
+      <div class="card-brand">Nike</div>
+      <div class="card-name">Dunk Low Next Nature</div>
+      <div class="card-colorway">Purple / Cream</div>
+      <div class="size-section">
+        <div class="size-category-tabs">
+          <button class="size-tab active" onclick="switchTab(this,'dk4-w')">Women</button>
+          <button class="size-tab" onclick="switchTab(this,'dk4-m')">Men</button>
+          <button class="size-tab" onclick="switchTab(this,'dk4-k')">Kids</button>
+        </div>
+        <div id="dk4-w" class="size-grid">
+          <button class="size-btn" onclick="selectSize(this)">6W</button>
+          <button class="size-btn" onclick="selectSize(this)">6.5W</button>
+          <button class="size-btn selected" onclick="selectSize(this)">7W</button>
+          <button class="size-btn" onclick="selectSize(this)">7.5W</button>
+          <button class="size-btn" onclick="selectSize(this)">8W</button>
+        </div>
+        <div id="dk4-m" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+        <div id="dk4-k" class="size-grid" style="display:none"><span style="font-size:11px;color:var(--gray);">Not available</span></div>
+      </div>
+      <div class="card-price-row">
+        <div class="card-price">$89.99</div>
+        <span class="badge badge-arriving">Arriving Soon</span>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low Next Nature — Purple/Cream','$89.99','7W','Women')">BUY NOW →</button>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SHOP / BRANDS -->
+<section id="shop-sneakers">
+  <p class="section-eyebrow reveal">Brands We Carry</p>
+  <h2 class="section-title reveal">SHOP <span>SNEAKERS</span></h2>
+
+  <div class="brands-grid">
+
+    <div class="brand-card reveal">
+      <span class="brand-icon">✔</span>
+      <div class="brand-name">NIKE</div>
+      <p class="brand-desc">Air Max, Dunk, Air Force 1 and more — sourced from trusted suppliers at the best prices.</p>
+      <div class="brand-links">
+        <a href="https://wa.me/17176590298" class="brand-link">📱 WhatsApp Us</a>
+        <a href="#contact" class="brand-link">📧 Place an Order</a>
+        <a href="https://www.nike.com/launch" target="_blank" class="brand-link">🔗 Nike Launch</a>
+      </div>
+    </div>
+
+    <div class="brand-card reveal">
+      <span class="brand-icon">⭐</span>
+      <div class="brand-name">JORDAN</div>
+      <p class="brand-desc">Jordan Retro, OG Colorways, limited editions — we find them for you before they sell out.</p>
+      <div class="brand-links">
+        <a href="https://wa.me/17176590298" class="brand-link">📱 WhatsApp Us</a>
+        <a href="#contact" class="brand-link">📧 Place an Order</a>
+        <a href="https://www.jordan.com" target="_blank" class="brand-link">🔗 Jordan Brand</a>
+      </div>
+    </div>
+
+    <div class="brand-card reveal">
+      <span class="brand-icon">🏃</span>
+      <div class="brand-name">NEW BALANCE</div>
+      <p class="brand-desc">550, 2002R, and all other in-demand New Balance models — available for resellers.</p>
+      <div class="brand-links">
+        <a href="https://wa.me/17176590298" class="brand-link">📱 WhatsApp Us</a>
+        <a href="#contact" class="brand-link">📧 Place an Order</a>
+        <a href="https://www.newbalance.com" target="_blank" class="brand-link">🔗 New Balance</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <p class="section-eyebrow reveal">Simple Process</p>
+  <h2 class="section-title reveal">HOW IT <span>WORKS</span></h2>
+
+  <div class="steps-grid">
+
+    <div class="step-card reveal">
+      <div class="step-number">01</div>
+      <div class="step-title">Choose Your Sneakers</div>
+      <p class="step-desc">Browse our inventory and choose the sneakers you want — Nike, Jordan, or New Balance. We'll guide you on which styles are selling fastest in the market.</p>
+    </div>
+
+    <div class="step-card reveal">
+      <div class="step-number">02</div>
+      <div class="step-title">We Source & Verify</div>
+      <p class="step-desc">We source authentic sneakers from trusted suppliers — authenticated and verified before delivery. Every pair is guaranteed 100% authentic.</p>
+    </div>
+
+    <div class="step-card reveal">
+      <div class="step-number">03</div>
+      <div class="step-title">You Sell & Profit</div>
+      <p class="step-desc">You receive the sneakers and sell them at a higher price. The difference is your profit. Simple, legal, and profitable.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <p class="section-eyebrow reveal">Choose Your Plan</p>
+  <h2 class="section-title reveal">PLANS <span>& PRICING</span></h2>
+
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <div class="pricing-card reveal">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>$</sup>0<sub>/mo</sub></div>
+      <div class="plan-range">1 – 5 pairs</div>
+      <ul class="plan-features">
+        <li class="included"><span class="check">✓</span> Access to our price list</li>
+        <li class="included"><span class="check">✓</span> Orders 1–5 pairs per month</li>
+        <li class="included"><span class="check">✓</span> WhatsApp Support</li>
+        <li><span class="cross">×</span> Exclusive wholesale pricing</li>
+        <li><span class="cross">×</span> Priority access to limited editions</li>
+        <li><span class="cross">×</span> Personal business consulting</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block; text-align:center;">Start Free</a>
+    </div>
+
+    <!-- RESELLER -->
+    <div class="pricing-card featured reveal">
+      <span class="featured-badge">Most Popular</span>
+      <div class="plan-name">Reseller</div>
+      <div class="plan-price"><sup>$</sup>49<sub>/mo</sub></div>
+      <div class="plan-range">6 – 20 pairs</div>
+      <ul class="plan-features">
+        <li class="included"><span class="check">✓</span> All Starter benefits</li>
+        <li class="included"><span class="check">✓</span> Exclusive wholesale pricing</li>
+        <li class="included"><span class="check">✓</span> Priority access to limited editions</li>
+        <li class="included"><span class="check">✓</span> Personal business consulting</li>
+        <li class="included"><span class="check">✓</span> Weekly market reports</li>
+        <li><span class="cross">×</span> Expedited shipping</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:block; text-align:center;">Choose This Plan</a>
+    </div>
+
+    <!-- WHOLESALER -->
+    <div class="pricing-card reveal">
+      <div class="plan-name">Wholesaler</div>
+      <div class="plan-price"><sup>$</sup>129<sub>/mo</sub></div>
+      <div class="plan-range">21+ pairs</div>
+      <ul class="plan-features">
+        <li class="included"><span class="check">✓</span> All Reseller benefits</li>
+        <li class="included"><span class="check">✓</span> Expedited shipping</li>
+        <li class="included"><span class="check">✓</span> Dedicated account manager</li>
+        <li class="included"><span class="check">✓</span> Exclusive limited access</li>
+        <li class="included"><span class="check">✓</span> Private price negotiation</li>
+        <li class="included"><span class="check">✓</span> Profit analysis reports</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block; text-align:center;">Contact Us</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SHIPPING & RETURNS -->
+<section id="shipping">
+  <p class="section-eyebrow reveal">Policies</p>
+  <h2 class="section-title reveal">SHIPPING <span>& RETURNS</span></h2>
+
+  <div class="policy-grid">
+
+    <div class="policy-card reveal">
+      <span class="policy-icon">📦</span>
+      <div class="policy-title">Shipping Methods</div>
+      <div class="policy-item">
+        <div class="policy-item-label">Standard</div>
+        <div class="policy-item-text">5–7 business days via USPS or UPS Ground. Available for all orders.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Expedited</div>
+        <div class="policy-item-text">2–3 business days via UPS or FedEx. Available for Wholesaler plan members.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Tracking</div>
+        <div class="policy-item-text">All orders receive a tracking number via WhatsApp or email within 24 hours of shipment.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Coverage</div>
+        <div class="policy-item-text">We ship within the United States. International shipping available upon request — contact us for rates.</div>
+      </div>
+    </div>
+
+    <div class="policy-card reveal">
+      <span class="policy-icon">🚚</span>
+      <div class="policy-title">Shipping Policy</div>
+      <div class="policy-item">
+        <div class="policy-item-label">Processing</div>
+        <div class="policy-item-text">Orders are processed within 1–3 business days after payment confirmation.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Packaging</div>
+        <div class="policy-item-text">All sneakers are shipped in original box, securely packed to prevent damage in transit.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Liability</div>
+        <div class="policy-item-text">Favorite Global Solutions LLC is not responsible for delays caused by the carrier. Once tracking is provided, the shipment is in the carrier's hands.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Address</div>
+        <div class="policy-item-text">Customers are responsible for providing a correct shipping address. Re-shipment fees apply for returned packages.</div>
+      </div>
+    </div>
+
+    <div class="policy-card reveal">
+      <span class="policy-icon">↩️</span>
+      <div class="policy-title">Return Policy</div>
+      <div class="policy-item">
+        <div class="policy-item-label">Window</div>
+        <div class="policy-item-text">Returns accepted within 7 days of delivery for items that arrive damaged or incorrect.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Condition</div>
+        <div class="policy-item-text">Items must be unworn, in original condition, and in original box to qualify for a return.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">Process</div>
+        <div class="policy-item-text">Contact us via WhatsApp or email within 7 days with photos of the issue. We will review and respond within 48 hours.</div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-label">No Returns</div>
+        <div class="policy-item-text">We do not accept returns for wrong size ordered, change of mind, or worn items. All sales are final for limited edition releases.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow reveal">Our Story</p>
+  <h2 class="section-title reveal">ABOUT <span>US</span></h2>
+
+  <div class="about-inner reveal">
+    <p class="about-text">
+      <strong>Favorite Global Solutions LLC</strong> is a registered premium sneaker reseller based in York, Pennsylvania. We specialize in sourcing authentic Nike, Jordan, and New Balance footwear from trusted suppliers and connecting them with customers who want quality at competitive prices.
+    </p>
+    <p class="about-text">
+      We are a Haitian-American business dedicated to serving our community — finding <strong>the best sneakers</strong> at the best prices, legally and professionally.
+    </p>
+
+    <div class="about-detail">
+      <div class="about-detail-label">Business Name</div>
+      <div class="about-detail-value">Favorite Global Solutions LLC</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">State</div>
+      <div class="about-detail-value">Registered in Delaware · Operating in Pennsylvania</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Address</div>
+      <div class="about-detail-value">York, Pennsylvania</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Specialty</div>
+      <div class="about-detail-value">Premium Athletic Footwear Resale — Nike, Jordan, New Balance</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Platforms</div>
+      <div class="about-detail-value">eBay · TikTok Shop · StockX · GOAT</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT / ORDER -->
+<section id="contact">
+  <p class="section-eyebrow reveal">Get In Touch</p>
+  <h2 class="section-title reveal">PLACE YOUR <span>ORDER</span></h2>
+
+  <div class="contact-grid">
+
+    <div class="contact-info reveal">
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📍</div>
+        <div>
+          <div class="contact-info-label">Address</div>
+          <div class="contact-info-value">York, Pennsylvania</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📱</div>
+        <div>
+          <div class="contact-info-label">WhatsApp</div>
+          <div class="contact-info-value">+1 (717) 659-0298</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📧</div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">favoriteglobalsolutions@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">🕐</div>
+        <div>
+          <div class="contact-info-label">Hours</div>
+          <div class="contact-info-value">Mon – Sat: 9am – 7pm EST<br/>Sun: By appointment</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="https://wa.me/17176590298" class="btn-primary" style="display:block; text-align:center;">💬 Message Us on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="Ex: Jean Pierre"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp Number</label>
+          <input type="tel" class="form-input" placeholder="+1 (___) ___-____"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Brand</label>
+          <select class="form-select">
+            <option value="">Choose a brand...</option>
+            <option>Nike</option>
+            <option>Jordan</option>
+            <option>New Balance</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Quantity (Pairs)</label>
+          <select class="form-select">
+            <option value="">How many pairs?</option>
+            <option>1–5 pairs</option>
+            <option>6–10 pairs</option>
+            <option>11–20 pairs</option>
+            <option>21+ pairs</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Model You Want (Optional)</label>
+        <input type="text" class="form-input" placeholder="Ex: Air Jordan 4 Retro, Nike Dunk Low..."/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Message (Optional)</label>
+        <textarea class="form-textarea" placeholder="Tell us more about your order or business..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; font-size:12px;" onclick="alert('Thank you! We will contact you on WhatsApp shortly.')">
+        PLACE MY ORDER →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section id="email-capture">
+  <div class="email-capture-title">GET NOTIFIED WHEN WE DROP</div>
+  <p class="email-capture-sub">Enter your email — you'll be the first to know when we drop new sneakers or special deals.</p>
+  <div class="email-capture-form">
+    <input type="email" class="email-capture-input" id="capture-email" placeholder="youremail@example.com"/>
+    <button class="email-capture-btn" onclick="submitEmail()">NOTIFY ME</button>
+  </div>
+  <div class="email-success-msg" id="email-success-msg">✔ You're in! We'll keep you posted.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">FAVORITE <span>GLOBAL</span></div>
+      <div class="footer-address">
+        Favorite Global Solutions LLC<br/>
+        York, Pennsylvania<br/>
+        Premium Sneaker Reseller
+      </div>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="footer-social">Instagram</a>
+      <a href="https://wa.me/17176590298" class="footer-social">WhatsApp</a>
+      <a href="#" class="footer-social">Facebook</a>
+      <a href="#" class="footer-social">TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Favorite Global Solutions LLC. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#shipping">Shipping Policy</a>
+      <a href="#shipping">Return Policy</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+
+    <div class="modal-title">CHECKOUT <span>NOW</span></div>
+    <div class="modal-product-name" id="modal-product-name">Nike Air Force 1 Low</div>
+
+    <!-- SECTION 1: Email -->
+    <div class="modal-section-label">📧 Your Email</div>
+    <input type="email" class="modal-input" id="m-email" placeholder="youremail@example.com"/>
+
+    <div class="modal-divider"></div>
+
+    <!-- SECTION 2: Shipping Info -->
+    <div class="modal-section-label">📦 Shipping Info</div>
+    <input type="text" class="modal-input" id="m-name" placeholder="Full Name (Ex: Marie Jean)"/>
+    <input type="tel" class="modal-input" id="m-phone" placeholder="Phone / WhatsApp (Ex: +1 717-555-0000)"/>
+    <input type="text" class="modal-input" id="m-address" placeholder="Street Address (Ex: 123 Main St, Apt 2)"/>
+    <div class="modal-row">
+      <input type="text" class="modal-input" id="m-city" placeholder="City"/>
+      <input type="text" class="modal-input" id="m-state" placeholder="State (Ex: PA)"/>
+    </div>
+    <div class="modal-row">
+      <input type="text" class="modal-input" id="m-zip" placeholder="ZIP Code"/>
+      <select class="modal-select" id="m-country">
+        <option value="US">United States 🇺🇸</option>
+        <option value="HT">Haiti 🇭🇹</option>
+        <option value="CA">Canada 🇨🇦</option>
+        <option value="OTHER">Other (contact us)</option>
+      </select>
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <!-- SECTION 3: Size Confirmed -->
+    <div class="modal-section-label">👟 Size Selected</div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:12px 16px;margin-bottom:20px;">
+      <span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--white);" id="modal-size-display">7W — Women</span>
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <!-- SECTION 4: Payment via Stripe Checkout -->
+    <div class="modal-section-label">💳 Secure Payment — Stripe</div>
+    <div class="stripe-accepted-icons">
+      <span class="pay-chip">🍎 Apple Pay</span>
+      <span class="pay-chip">🌐 Google Pay</span>
+      <span class="pay-chip">💳 Credit Card</span>
+      <span class="pay-chip">🏦 Debit Card</span>
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <!-- TOTAL -->
+    <div class="modal-total-row">
+      <div class="modal-total-label">TOTAL (excl. tax + shipping)</div>
+      <div class="modal-total-price" id="modal-price">$79.99</div>
+    </div>
+
+    <p class="modal-note">🔒 You will be redirected to Stripe's secure checkout page. Apple Pay, Google Pay, Credit & Debit Cards accepted. Tax and shipping costs will be added at checkout.</p>
+
+    <button class="btn-primary" id="stripe-pay-btn" style="width:100%;font-size:12px;padding:16px;" onclick="submitToStripe()">
+      PAY NOW — SECURE CHECKOUT 🔒
+    </button>
+    <div id="stripe-processing" style="display:none;text-align:center;padding:14px;font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:0.14em;">
+      ⏳ CONNECTING TO STRIPE...
+    </div>
+    <div id="stripe-error-msg" style="display:none;color:#ff6b6b;font-size:12px;margin-top:8px;font-family:'Space Mono',monospace;text-align:center;"></div>
+  </div>
+</div>
+
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  const stripe = Stripe('pk_live_51TIPSoL1kSWChVLQvar4lG4RKvLfON2zNvTf6FnH9fZeyHwU64zI3AHkUDWoSP1XqtxuirC7BpzZNBE02ZaOxwBg00BX4xZACP');
+
+  // Product catalog — price in cents
+  const PRODUCTS = {
+    'Nike Air Force 1 Low — White/Saturn Gold':        { cents: 7999,  name: 'Nike Air Force 1 Low — White/Saturn Gold' },
+    'Nike Dunk Low Friendship Knot — Sail/Picante Red':{ cents: 6999,  name: 'Nike Dunk Low Friendship Knot' },
+    'Nike Dunk Low — Womens':                          { cents: 6999,  name: 'Nike Dunk Low — Womens Size 9' },
+    'Nike Dunk Low — White/Turquoise-Orange':          { cents: 8999,  name: 'Nike Dunk Low — White/Turquoise-Orange' },
+    'Nike Dunk Low Next Nature — Purple/Cream':        { cents: 8999,  name: 'Nike Dunk Low Next Nature — Purple/Cream' },
+  };
+
+  let currentProduct = null;
+
+  // ── Scroll reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Size tab switcher ──
+  function switchTab(btn, gridId) {
+    const tabs = btn.parentElement.querySelectorAll('.size-tab');
+    tabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const grids = btn.closest('.size-section').querySelectorAll('.size-grid');
+    grids.forEach(g => g.style.display = 'none');
+    document.getElementById(gridId).style.display = 'flex';
+  }
+
+  function selectSize(btn) {
+    const grid = btn.parentElement;
+    grid.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  // ── Checkout modal ──
+  function openCheckout(productKey, price, size, category) {
+    currentProduct = productKey;
+    document.getElementById('modal-product-name').textContent = productKey;
+    document.getElementById('modal-price').textContent = price;
+    document.getElementById('modal-size-display').textContent = size + ' — ' + category;
+    document.getElementById('checkout-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('stripe-pay-btn').style.display = 'block';
+    document.getElementById('stripe-processing').style.display = 'none';
+    document.getElementById('stripe-error-msg').style.display = 'none';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('checkout-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeCheckout();
+  });
+
+  // ── Submit to Stripe Checkout (via Netlify Function) ──
+  async function submitToStripe() {
+    const email = document.getElementById('m-email').value.trim();
+    const name  = document.getElementById('m-name').value.trim();
+    const phone = document.getElementById('m-phone').value.trim();
+    const addr  = document.getElementById('m-address').value.trim();
+    const city  = document.getElementById('m-city').value.trim();
+    const state = document.getElementById('m-state').value.trim();
+    const zip   = document.getElementById('m-zip').value.trim();
+
+    if (!email || !name || !addr || !city || !state || !zip) {
+      alert('Please fill in all required fields:\n• Email\n• Full Name\n• Address\n• City\n• State\n• ZIP Code');
+      return;
+    }
+
+    const size    = document.getElementById('modal-size-display').textContent;
+    const product = PRODUCTS[currentProduct] || { cents: 7999, name: currentProduct };
+
+    document.getElementById('stripe-pay-btn').style.display = 'none';
+    document.getElementById('stripe-processing').style.display = 'block';
+    document.getElementById('stripe-error-msg').style.display = 'none';
+
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productName: product.name,
+          priceCents:  product.cents,
+          size:        size,
+          customerEmail: email,
+          customerName:  name,
+          customerPhone: phone,
+          shippingAddress: { line1: addr, city, state, zip,
+            country: document.getElementById('m-country').value }
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        // Redirect to Stripe Checkout page
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Stripe Error');
+      }
+    } catch (err) {
+      document.getElementById('stripe-processing').style.display = 'none';
+      document.getElementById('stripe-pay-btn').style.display = 'block';
+      document.getElementById('stripe-error-msg').style.display = 'block';
+      document.getElementById('stripe-error-msg').textContent = '⚠️ Error: ' + err.message + ' — Please contact us on WhatsApp.';
+    }
+  }
+
+  // ── Email capture ──
+  function submitEmail() {
+    const val = document.getElementById('capture-email').value.trim();
+    if (!val || !val.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    document.querySelector('.email-capture-form').style.display = 'none';
+    document.getElementById('email-success-msg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
