@@ -35,7 +35,16 @@
     .btn-primary:hover { background: #b81e1e; transform: translateY(-1px); }
     .btn-outline { background: transparent; color: var(--white); padding: 14px 32px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: border-color 0.2s, transform 0.15s; }
     .btn-outline:hover { border-color: var(--white); transform: translateY(-1px); }
-    .hero-stats { position: absolute; right: 48px; bottom: 80px; display: flex; flex-direction: column; gap: 32px; text-align: right; }
+    .hero-stats { display: flex; gap: 40px; text-align: left; margin-top: 52px; }
+    .hero-grid { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .hero-content { flex: 1 1 440px; min-width: 0; }
+    .hero-visual { position: relative; flex: 1.3 1 560px; max-width: 680px; display: flex; align-items: center; justify-content: center; min-height: 560px; }
+    .hero-visual-glow { position: absolute; width: 560px; height: 560px; background: radial-gradient(circle, rgba(201,168,76,0.16), transparent 70%); filter: blur(30px); z-index: 0; pointer-events: none; }
+    .hero-visual-frame { position: absolute; inset: 16px; border: 1px solid rgba(201,168,76,0.25); z-index: 0; pointer-events: none; }
+    .hero-visual-eyebrow { position: absolute; top: 0; left: 0; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.26em; color: var(--gold); text-transform: uppercase; z-index: 2; }
+    .hero-shoe-img { position: relative; z-index: 1; width: 100%; max-width: 640px; transform: rotate(-5deg); filter: drop-shadow(0 35px 50px rgba(0,0,0,0.55)); transition: transform 0.4s ease; }
+    .hero-shoe-img:hover { transform: rotate(-1deg) scale(1.03); }
+    .hero-shoe-tag { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(10,10,10,0.88); border: 1px solid var(--gold); backdrop-filter: blur(8px); padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--gold); text-transform: uppercase; z-index: 2; white-space: nowrap; }
     .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--white); line-height: 1; }
     .stat-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--gray); text-transform: uppercase; }
     section { padding: 100px 48px; }
@@ -48,6 +57,16 @@
     .sneaker-card { background: var(--card-bg); padding: 32px 28px; border: 1px solid var(--border); transition: border-color 0.2s, transform 0.2s; cursor: pointer; position: relative; }
     .sneaker-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-4px); }
     .card-img { width: 100%; height: 200px; object-fit: contain; background: #1a1a1a; margin-bottom: 20px; padding: 12px; }
+    .card-gallery { position: relative; width: 100%; height: 200px; background: #1a1a1a; margin-bottom: 20px; overflow: hidden; }
+    .gallery-img { display: none; width: 100%; height: 200px; object-fit: contain; padding: 12px; }
+    .gallery-img.active { display: block; }
+    .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(10,10,10,0.62); border: 1px solid rgba(255,255,255,0.18); color: var(--white); width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 14px; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 2; padding: 0; transition: background 0.2s, border-color 0.2s; }
+    .gallery-arrow:hover { background: rgba(214,40,40,0.85); border-color: var(--red); }
+    .gallery-arrow-left { left: 8px; }
+    .gallery-arrow-right { right: 8px; }
+    .gallery-dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; z-index: 2; }
+    .gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; padding: 0; border: none; transition: background 0.2s, transform 0.2s; }
+    .gallery-dot.active { background: var(--gold); transform: scale(1.3); }
     .card-brand { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .card-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; color: var(--white); margin-bottom: 4px; }
     .card-colorway { font-size: 12px; color: var(--gray); margin-bottom: 24px; }
@@ -58,10 +77,6 @@
     .badge-limited { border: 1px solid var(--gold); color: var(--gold); }
     .badge-new { background: var(--red); color: var(--white); border: none; }
     .badge-arriving { border: 1px solid #3B9EFF; color: #3B9EFF; }
-    .badge-stock {
-border: 1px solid #2ECC71;
-color: #2ECC71;
-}
     #shop-sneakers { background: var(--black); }
     .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
     .brand-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px 36px; transition: border-color 0.2s; }
@@ -96,6 +111,12 @@ color: #2ECC71;
     #shipping { background: #0D0D0D; }
     .policy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
     .policy-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px 36px; }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
+    .review-card { background: var(--card-bg); border: 1px solid var(--border); padding: 36px 32px; }
+    .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+    .review-text { font-size: 14px; color: #B5B5B5; line-height: 1.7; margin-bottom: 24px; }
+    .review-author { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--white); text-transform: uppercase; }
+    .review-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: var(--gray); margin-top: 4px; }
     .policy-icon { font-size: 28px; margin-bottom: 20px; display: block; }
     .policy-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); margin-bottom: 20px; }
     .policy-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
@@ -179,11 +200,12 @@ color: #2ECC71;
     .email-capture-input::placeholder { color: rgba(255,255,255,0.45); }
     .email-capture-btn { background: var(--black); color: var(--white); border: none; padding: 13px 24px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
     .email-success-msg { display: none; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--white); margin-top: 12px; }
-    .reveal { Opacity: 1; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 768px) {
       nav { padding: 16px 24px; } .nav-links { display: none; } section { padding: 72px 24px; }
       #home { padding: 120px 24px 72px; } .hero-stats { display: none; }
+      .hero-grid { flex-direction: column; gap: 40px; } .hero-visual { max-width: 100%; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; }
       footer { padding: 40px 24px 24px; } .footer-top { flex-direction: column; gap: 24px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -193,9 +215,7 @@ color: #2ECC71;
 <body>
 
 <nav>
-  <a href="#home" class="nav-logo">
-<img src="D64FAE54-90F2-4DC4-B25A-A5EBB7B243F1.png" alt="Favorite Global Logo" style="height:110px;">
-</a>
+  <a href="#home" class="nav-logo">FAVORITE <span>GLOBAL</span></a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#new-arrivals">New Arrivals</a></li>
@@ -203,6 +223,8 @@ color: #2ECC71;
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#about">About Us</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="track.html">Track Order</a></li>
     <li><a href="#contact" class="nav-cta">Order Now</a></li>
   </ul>
 </nav>
@@ -220,22 +242,32 @@ color: #2ECC71;
       <span>LIMITED EDITION</span><span>·</span><span>PREMIUM RESELLER</span><span>·</span>
     </div>
   </div>
-  <p class="hero-eyebrow">Premium Sneaker Reseller · York, PA</p>
-  <h1 class="hero-headline">
-    <span class="line-dim">BUY.</span><br/>
-    <span class="line-red">SELL.</span><br/>
-    <span class="line-dim">WIN.</span>
-  </h1>
-  <p class="hero-sub">At Favorite Global Solutions, we source authentic Nike, Jordan, New Balance and other premium footwear from trusted suppliers — bringing quality sneakers to our customers at competitive prices.</p>
-  <div class="hero-buttons">
-    <a href="#shop-sneakers" class="btn-primary">Shop Sneakers</a>
-    <a href="#pricing" class="btn-outline">View Pricing</a>
-  </div>
-  <img src="airforce1-gold.jpg" alt="Air Force 1" style="width:700px; max-width:55vw; position:absolute; right:20px; top:100px;">
-  <div class="hero-stats" aria-hidden="true">
-    <div><div class="stat-number">3+</div><div class="stat-label">Premium Brands</div></div>
-    <div><div class="stat-number">100%</div><div class="stat-label">Authentic Pairs</div></div>
-    <div><div class="stat-number">LLC</div><div class="stat-label">Registered Business</div></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Premium Sneaker Reseller · York, PA</p>
+      <h1 class="hero-headline">
+        <span class="line-dim">BUY.</span><br/>
+        <span class="line-red">SELL.</span><br/>
+        <span class="line-dim">WIN.</span>
+      </h1>
+      <p class="hero-sub">At Favorite Global Solutions, we source authentic Nike, Jordan, New Balance and other premium footwear from trusted suppliers — bringing quality sneakers to our customers at competitive prices.</p>
+      <div class="hero-buttons">
+        <a href="#shop-sneakers" class="btn-primary">Shop Sneakers</a>
+        <a href="#pricing" class="btn-outline">View Pricing</a>
+      </div>
+      <div class="hero-stats" aria-hidden="true">
+        <div><div class="stat-number">3+</div><div class="stat-label">Premium Brands</div></div>
+        <div><div class="stat-number">100%</div><div class="stat-label">Authentic Pairs</div></div>
+        <div><div class="stat-number">LLC</div><div class="stat-label">Registered Business</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="hero-visual-eyebrow">Featured Drop</span>
+      <div class="hero-visual-glow" aria-hidden="true"></div>
+      <div class="hero-visual-frame" aria-hidden="true"></div>
+      <img class="hero-shoe-img" src="images/dunk-cream-olive-hero.png" alt="Nike Dunk Low Cream/Olive"/>
+      <div class="hero-shoe-tag">Nike Dunk Low — Cream / Olive</div>
+    </div>
   </div>
 </section>
 
@@ -244,13 +276,23 @@ color: #2ECC71;
 <section id="new-arrivals">
   <p class="section-eyebrow reveal">Fresh Drop</p>
   <h2 class="section-title reveal">NEW <span>ARRIVALS</span></h2>
-  <p style="color:#C9A84C;font-family:'Space Mono',monospace;letter-spacing:0.12em;margin-bottom:25px;">🔥 CURRENT INVENTORY: 2 PAIRS IN STOCK · 3 PAIRS ARRIVING TODAY</p>
+  <p style="color:#C9A84C;font-family:'Space Mono',monospace;letter-spacing:0.12em;margin-bottom:25px;">🔥 ALL SNEAKERS AVAILABLE NOW — IN STOCK</p>
   <div class="sneaker-grid">
 
     <!-- AF1 — FOTO REYEL CLOUDINARY -->
     <div class="sneaker-card reveal">
       <span class="badge badge-new" style="margin-bottom:12px;display:inline-block;">NEW</span>
-      <img class="card-img" src="images/air-force-1-yellow-side.jpeg" alt="Nike Air Force 1 Low White Saturn Gold"/>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img class="gallery-img active" src="images/air-force-1-yellow-side.jpeg" alt="Nike Air Force 1 Low White Saturn Gold"/>
+          <!-- AJOUTE PLIS FOTO: images/air-force-1-yellow-side-2.jpeg, -3.jpeg, -4.jpeg, -5.jpeg -->
+        </div>
+        <button class="gallery-arrow gallery-arrow-left" onclick="galleryShift(this,-1)" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow gallery-arrow-right" onclick="galleryShift(this,1)" aria-label="Next photo">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" onclick="gallerySetDot(this,0)" aria-label="Photo 1"></button>
+        </div>
+      </div>
       <div class="card-brand">Nike</div>
       <div class="card-name">Air Force 1 Low</div>
       <div class="card-colorway">White / Saturn Gold</div>
@@ -268,13 +310,23 @@ color: #2ECC71;
         <div class="card-price">$89.99</div>
         <span class="badge badge-available">In Stock</span>
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Air Force 1 Low — White/Saturn Gold','$79.99','8W','Women')">BUY NOW →</button>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Air Force 1 Low — White/Saturn Gold','$89.99','8W','Women')">BUY NOW →</button>
     </div>
 
     <!-- DUNK LOW SAIL/PICANTE RED — FOTO REYEL CLOUDINARY -->
     <div class="sneaker-card reveal">
       <span class="badge badge-new" style="margin-bottom:12px;display:inline-block;">NEW</span>
-      <img class="card-img" src="images/dunk-friendship-side.jpeg" alt="Nike Dunk Low Sail Picante Red"/>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img class="gallery-img active" src="images/dunk-friendship-side.jpeg" alt="Nike Dunk Low Sail Picante Red"/>
+          <!-- AJOUTE PLIS FOTO: images/dunk-friendship-side-2.jpeg, -3.jpeg, -4.jpeg, -5.jpeg -->
+        </div>
+        <button class="gallery-arrow gallery-arrow-left" onclick="galleryShift(this,-1)" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow gallery-arrow-right" onclick="galleryShift(this,1)" aria-label="Next photo">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" onclick="gallerySetDot(this,0)" aria-label="Photo 1"></button>
+        </div>
+      </div>
       <div class="card-brand">Nike</div>
       <div class="card-name">Dunk Low "Friendship Knot"</div>
       <div class="card-colorway">Sail / Picante Red / Flax / Pale Ivory</div>
@@ -298,15 +350,24 @@ color: #2ECC71;
         <div class="card-price">$84.99</div>
         <span class="badge badge-available">In Stock</span>
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low Friendship Knot — Sail/Picante Red','$69.99','7W','Women')">BUY NOW →</button>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low Friendship Knot — Sail/Picante Red','$84.99','7W','Women')">BUY NOW →</button>
     </div>
 
     <!-- DUNK LOW SIZE 9 — ARRIVING SOON -->
     <div class="sneaker-card reveal">
       <span class="badge badge-new" style="margin-bottom:12px;display:inline-block;">NEW</span>
-      <img class="card-img" src="images/85B25174-0AD6-4FD1-A5FC-A0CDEB7A5A81.png">     
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img class="gallery-img active" src="https://images.stockx.com/images/Nike-Dunk-Low-Olive-Aura-Womens-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500" alt="Nike Dunk Low Womens Size 9" onerror="this.style.display='none'"/>
+          <!-- AJOUTE PLIS FOTO: images/dunk-low-womens-2.jpeg, -3.jpeg, -4.jpeg, -5.jpeg -->
+        </div>
+        <button class="gallery-arrow gallery-arrow-left" onclick="galleryShift(this,-1)" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow gallery-arrow-right" onclick="galleryShift(this,1)" aria-label="Next photo">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" onclick="gallerySetDot(this,0)" aria-label="Photo 1"></button>
+        </div>
+      </div>
       <div class="card-brand">Nike</div>
-
       <div class="card-name">Dunk Low</div>
       <div class="card-colorway">Womens — Size 9</div>
       <div class="size-section">
@@ -321,15 +382,26 @@ color: #2ECC71;
       </div>
       <div class="card-price-row">
         <div class="card-price">$84.99</div>
-        <span class="badge badge-stock">In Stock</span>
+        <span class="badge badge-available">In Stock</span>
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — Womens','$69.99','9W','Women')">BUY NOW →</button>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — Womens','$84.99','9W','Women')">BUY NOW →</button>
     </div>
 
     <!-- DUNK LOW TURQUOISE — ARRIVING SOON -->
     <div class="sneaker-card reveal">
       <span class="badge badge-new" style="margin-bottom:12px;display:inline-block;">NEW</span>
-      <img class="card-img" src="images/7B67BB0B-CF6E-4898-9A50-4D630E271C3C.png" alt="Nike Dunk Low White Turquoise Orange"/>      <div class="card-brand">Nike</div>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img class="gallery-img active" src="images/dunk-turquoise-side.png" alt="Nike Dunk Low White Turquoise Orange"/>
+          <!-- AJOUTE PLIS FOTO: images/dunk-turquoise-side-2.png, -3.png, -4.png, -5.png -->
+        </div>
+        <button class="gallery-arrow gallery-arrow-left" onclick="galleryShift(this,-1)" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow gallery-arrow-right" onclick="galleryShift(this,1)" aria-label="Next photo">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" onclick="gallerySetDot(this,0)" aria-label="Photo 1"></button>
+        </div>
+      </div>
+      <div class="card-brand">Nike</div>
       <div class="card-name">Dunk Low</div>
       <div class="card-colorway">White / Turquoise-Orange</div>
       <div class="size-section">
@@ -344,17 +416,27 @@ color: #2ECC71;
       </div>
       <div class="card-price-row">
         <div class="card-price">$94.99</div>
-        <span class="badge badge-stock">In Stock</span>
+        <span class="badge badge-available">In Stock</span>
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — White/Turquoise-Orange','$89.99','7.5W','Women')">BUY NOW →</button>
+      <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low — White/Turquoise-Orange','$94.99','7.5W','Women')">BUY NOW →</button>
     </div>
 
     <!-- DUNK LOW PURPLE/CREAM — ARRIVING SOON -->
     <div class="sneaker-card reveal">
       <span class="badge badge-new" style="margin-bottom:12px;display:inline-block;">NEW</span>
-        <img class="card-img" src="images/8137B67C-5C80-4EE9-871E-7F12E0B27901.png" alt="Nike Dunk Low Next Nature Purple Cream"/>    
-      <div class="card-name">Dunk Low Next Nature</div>
+      <div class="card-gallery">
+        <div class="gallery-track">
+          <img class="gallery-img active" src="images/dunk-next-nature-side.png" alt="Nike Dunk Low Next Nature Purple Cream"/>
+          <!-- AJOUTE PLIS FOTO: images/dunk-next-nature-side-2.png, -3.png, -4.png, -5.png -->
+        </div>
+        <button class="gallery-arrow gallery-arrow-left" onclick="galleryShift(this,-1)" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow gallery-arrow-right" onclick="galleryShift(this,1)" aria-label="Next photo">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" onclick="gallerySetDot(this,0)" aria-label="Photo 1"></button>
+        </div>
+      </div>
       <div class="card-brand">Nike</div>
+      <div class="card-name">Dunk Low Next Nature</div>
       <div class="card-colorway">Purple / Cream</div>
       <div class="size-section">
         <div class="size-category-tabs">
@@ -374,7 +456,7 @@ color: #2ECC71;
       </div>
       <div class="card-price-row">
         <div class="card-price">$89.99</div>
-        <span class="badge badge-stock">In Stock</span>
+        <span class="badge badge-available">In Stock</span>
       </div>
       <button class="btn-primary" style="width:100%;margin-top:14px;font-size:10px;" onclick="openCheckout('Nike Dunk Low Next Nature — Purple/Cream','$89.99','7W','Women')">BUY NOW →</button>
     </div>
@@ -548,6 +630,67 @@ color: #2ECC71;
 
 <div class="divider"></div>
 
+<!-- EGZANP REVIEWS — RANPLASE AK VRÈ KÒMANTÈ KLIYAN LE OU GENYEN YO -->
+<section id="reviews">
+  <p class="section-eyebrow reveal">Customer Love</p>
+  <h2 class="section-title reveal">WHAT THEY <span>SAY</span></h2>
+  <div class="review-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Ordered my Dunks on a Monday, had them by Friday. Box was clean, sneakers were 100% authentic. Will be ordering again."</p>
+      <div class="review-author">Jasmine R.</div>
+      <div class="review-tag">Fast Shipping</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Was nervous about buying sneakers online but these are 100% legit. Verified the pair myself — exactly as described."</p>
+      <div class="review-author">Marcus T.</div>
+      <div class="review-tag">Authentic Sneakers</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Communication was great from start to finish and shipping was quicker than I expected. My new go-to for sneakers."</p>
+      <div class="review-author">Destiny A.</div>
+      <div class="review-tag">Fast Shipping</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Quality is exactly what you'd expect from the real thing. Easy checkout, smooth payment, no issues at all."</p>
+      <div class="review-author">Kevin M.</div>
+      <div class="review-tag">Authentic Sneakers</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="faq">
+  <p class="section-eyebrow reveal">Got Questions?</p>
+  <h2 class="section-title reveal">FAQ<span>S</span></h2>
+  <div class="policy-grid">
+    <div class="policy-card reveal">
+      <span class="policy-icon">✅</span>
+      <div class="policy-title">Authenticity</div>
+      <div class="policy-item"><div class="policy-item-label">Real?</div><div class="policy-item-text">Yes — every pair we sell is 100% authentic, sourced from trusted, verified suppliers. No fakes, ever.</div></div>
+      <div class="policy-item"><div class="policy-item-label">Proof?</div><div class="policy-item-text">Each pair can be verified through StockX or GOAT authentication before it ships to you.</div></div>
+    </div>
+    <div class="policy-card reveal">
+      <span class="policy-icon">⚡</span>
+      <div class="policy-title">Shipping & Delivery</div>
+      <div class="policy-item"><div class="policy-item-label">How fast?</div><div class="policy-item-text">Most orders ship within 1–3 business days and arrive in 5–7 business days via USPS or UPS.</div></div>
+      <div class="policy-item"><div class="policy-item-label">Tracking?</div><div class="policy-item-text">Yes — you'll receive a tracking number by WhatsApp or email as soon as your order ships.</div></div>
+    </div>
+    <div class="policy-card reveal">
+      <span class="policy-icon">💳</span>
+      <div class="policy-title">Payment & Sizing</div>
+      <div class="policy-item"><div class="policy-item-label">Payments?</div><div class="policy-item-text">We accept Apple Pay, Google Pay, and all major credit/debit cards through secure Stripe checkout.</div></div>
+      <div class="policy-item"><div class="policy-item-label">Sizing?</div><div class="policy-item-text">All sizes listed are true to US sizing. Message us on WhatsApp if you need help choosing a size.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="contact">
   <p class="section-eyebrow reveal">Get In Touch</p>
   <h2 class="section-title reveal">PLACE YOUR <span>ORDER</span></h2>
@@ -592,14 +735,16 @@ color: #2ECC71;
       <div class="footer-address">Favorite Global Solutions LLC<br/>York, Pennsylvania<br/>Premium Sneaker Reseller</div>
     </div>
     <div class="footer-socials">
-      <a href="#" class="footer-social">Facebook</a>
+      <a href="https://www.facebook.com/share/1ChEwtH6zp/" target="_blank" class="footer-social">Facebook</a>
+      <a href="https://www.instagram.com/manathanalfredito" target="_blank" class="footer-social">Instagram</a>
+      <a href="https://www.tiktok.com/@alfreditooscarmanathan" target="_blank" class="footer-social">TikTok</a>
       <a href="https://wa.me/17176590298" class="footer-social">WhatsApp</a>
-      <a href="#" class="footer-social">TikTok</a>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 Favorite Global Solutions LLC. All rights reserved.</div>
     <div class="footer-legal">
+      <a href="track.html">Track Order</a>
       <a href="#shipping">Shipping Policy</a>
       <a href="#shipping">Return Policy</a>
       <a href="#contact">Contact Us</a>
@@ -677,6 +822,28 @@ color: #2ECC71;
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  function galleryShift(btn, dir) {
+    const gallery = btn.closest('.card-gallery');
+    const imgs = gallery.querySelectorAll('.gallery-img');
+    const dots = gallery.querySelectorAll('.gallery-dot');
+    if (imgs.length <= 1) return;
+    let idx = 0;
+    imgs.forEach((img, i) => { if (img.classList.contains('active')) idx = i; });
+    imgs[idx].classList.remove('active');
+    if (dots[idx]) dots[idx].classList.remove('active');
+    idx = (idx + dir + imgs.length) % imgs.length;
+    imgs[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+  }
+
+  function gallerySetDot(dotEl, index) {
+    const gallery = dotEl.closest('.card-gallery');
+    const imgs = gallery.querySelectorAll('.gallery-img');
+    const dots = gallery.querySelectorAll('.gallery-dot');
+    imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
 
   function switchTab(btn, gridId) {
     const tabs = btn.parentElement.querySelectorAll('.size-tab');
